@@ -99,24 +99,11 @@ public class PayTM extends CordovaPlugin {
                 JSONObject paymentResponse = new JSONObject();
                 try {
 
-                    paymentResponse.put("SUBS_ID", inResponse.getString("SUBS_ID"));
-                    paymentResponse.put("MID", inResponse.getString("MID"));
-                    paymentResponse.put("TXNID", inResponse.getString("TXNID"));
-                    paymentResponse.put("ORDERID", inResponse.getString("ORDERID"));
-                    paymentResponse.put("BANKTXNID", inResponse.getString("BANKTXNID"));
-                    paymentResponse.put("TXNAMOUNT", inResponse.getString("TXNAMOUNT"));
-                    paymentResponse.put("CURRENCY", inResponse.getString("CURRENCY"));
                     paymentResponse.put("STATUS", inResponse.getString("STATUS"));
-                    paymentResponse.put("RESPCODE", inResponse.getString("RESPCODE"));
-                    paymentResponse.put("RESPMSG", inResponse.getString("RESPMSG"));
+                    paymentResponse.put("ORDERID", inResponse.getString("ORDERID"));
+                    paymentResponse.put("TXNID", inResponse.getString("TXNID"));
                     paymentResponse.put("TXNDATE", inResponse.getString("TXNDATE"));
-                    paymentResponse.put("GATEWAYNAME", inResponse.getString("GATEWAYNAME"));
-                    paymentResponse.put("BANKNAME", inResponse.getString("BANKNAME"));
-                    paymentResponse.put("PAYMENTMODE", inResponse.getString("PAYMENTMODE"));
-                    paymentResponse.put("PROMO_CAMP_ID", inResponse.getString("PROMO_CAMP_ID"));
-                    paymentResponse.put("PROMO_STATUS", inResponse.getString("PROMO_STATUS"));
-                    paymentResponse.put("PROMO_RESPCODE", inResponse.getString("PROMO_RESPCODE"));
-                    paymentResponse.put("CHECKSUMHASH", inResponse.getString("CHECKSUMHASH"));
+                    paymentResponse.put("BANKTXNID", inResponse.getString("BANKTXNID"));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
