@@ -1,4 +1,4 @@
-cordova.define("com.paytm.cordova.paytm", function(require, exports, module) {
+
 var exec = require('cordova/exec');
 var PLUGIN_NAME = 'PayTM';
 
@@ -14,5 +14,3 @@ var PayTM = {
 };
 
 module.exports = PayTM;
-
-});
