@@ -83,7 +83,8 @@ public class PayTM extends CordovaPlugin {
         paramMap.put("EMAIL", email);
         paramMap.put("MOBILE_NO", phone);
         paramMap.put("THEME", "merchant");
-
+        paramMap.put("CALLBACK_URL", this.PAYTM_VALIDATE_URL);
+        
         PaytmOrder order = new PaytmOrder(paramMap);
         PaytmMerchant merchant = new PaytmMerchant(this.PAYTM_GENERATE_URL, this.PAYTM_VALIDATE_URL);
 
