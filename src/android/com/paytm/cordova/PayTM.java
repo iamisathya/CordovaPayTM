@@ -70,7 +70,7 @@ public class PayTM extends CordovaPlugin {
         }else{
           return;
         }
-	    
+
         Map<String, String> paramMap = new HashMap<String, String>();
         paramMap.put("REQUEST_TYPE", "DEFAULT");
         paramMap.put("ORDER_ID", order_id);
@@ -83,7 +83,8 @@ public class PayTM extends CordovaPlugin {
         paramMap.put("EMAIL", email);
         paramMap.put("MOBILE_NO", phone);
         paramMap.put("THEME", "merchant");
-
+        paramMap.put("CALLBACK_URL", this.PAYTM_VALIDATE_URL);
+        
         PaytmOrder order = new PaytmOrder(paramMap);
         PaytmMerchant merchant = new PaytmMerchant(this.PAYTM_GENERATE_URL, this.PAYTM_VALIDATE_URL);
 
@@ -150,6 +151,15 @@ public class PayTM extends CordovaPlugin {
                 Log.i("Error","someUIErrorOccurred :"+arg0);
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "UIErrorOccurred"));
             }
+
+            // had to be added: NOTE
+            @Override
+            public void onBackPressedCancelTransaction() {
+                // TODO Auto-generated method stub
+                Log.i("Error","BackPressedCancelTransaction");
+                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "Transaction cancelled by user."));
+            }
+
         });
     }
 }

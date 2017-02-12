@@ -1,9 +1,17 @@
-module.exports = {
-  startPayment: function(orderId, customerId, email, phone, amount, method, successCallback, failureCallback) {
-    cordova.exec(successCallback,
+
+var exec = require('cordova/exec');
+var PLUGIN_NAME = 'PayTM';
+
+var PayTM = {
+    startPayment: function(orderId, customerId, email, phone, amount, method, successCallback, failureCallback) {
+    exec(successCallback,
                  failureCallback, 
                  "PayTM",
                  "startPayment",
                  [orderId, customerId, email, phone, amount, method]);
   }
+
 };
+
+module.exports = PayTM;
+

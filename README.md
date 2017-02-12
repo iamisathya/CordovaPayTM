@@ -20,7 +20,7 @@ This plugin has only been tested in Cordova 3.2 or greater, and its use in previ
 If you do use this plugin in an older Cordova version (again, not recommended), you have to make sure the HideKeyboardFormAccessoryBar and KeyboardShrinksView preference values are always false, and only use the API functions to turn things on/off.
 
 ## Usage
-window.plugins.paytm.startPayment(txn_id, customer_id, email, phone, amount, method, successCallback, failureCallback);  
+PayTM.startPayment(txn_id, customer_id, email, phone, amount, method, successCallback, failureCallback);  
   
 ## Methods
 
@@ -34,14 +34,16 @@ window.plugins.paytm.startPayment(txn_id, customer_id, email, phone, amount, met
 
   //Example
   
-        window.plugins.paytm.startPayment(txn_id, customer_id, "idevsathya@gmail.com" ,"******9055", "10", "staging", successCallback, failureCallback);
-              function successCallback(response) {
+        PayTM.startPayment(txn_id, customer_id, "idevsathya@gmail.com" ,"******9055", "10", "staging", successCallback, failureCallback);
+              function successCallback(result) {
               //staging (or) product 
-                var transactionBankTxnId = response.MID;
-                var transactionMId = response.ORDERID;
-                var transactionOrderId = response.TXNID;
-                var transactionTxnDate = response.TXNDATE;
-                var transactionTxnId = response.BANKTXNID;
+                         var response = JSON.parse(result);
+
+                          var transactionBankTxnId = response.BANKTXNID;
+                          var transactionOrderId = response.ORDERID;
+                          var transactionTxnDate = response.TXNDATE;
+                          var transactionTxnId = response.TXNID;
+                          var transactionStatus = response.STATUS;
 
                 alert(JSON.stringify(response));
                 console.log("Payed Successfully");
